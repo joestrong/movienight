@@ -5,3 +5,9 @@ npm-debug.*
 *.p12
 *.key
 *.mobileprovision
+
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
