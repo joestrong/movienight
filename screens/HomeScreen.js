@@ -18,6 +18,11 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {status: 'Logged out'};
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -39,9 +44,12 @@ export default class HomeScreen extends React.Component {
             </Text>
           </View>
 
+          <View>
+            <Text id="status">{this.state.status}</Text>
+          </View>
+
           <View style={styles.helpContainer}>
-            <Text style={styles.helpLinkText}>Please log in</Text>
-            <Button onPress={AuthService.loginWithFacebook} title="Log in with Facebook" />
+            <Button onPress={_ => {AuthService.loginWithFacebook(this)}} title="Log in with Facebook" />
           </View>
         </ScrollView>
 

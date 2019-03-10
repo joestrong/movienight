@@ -2,7 +2,7 @@ import { Facebook } from 'expo';
 
 export default class AuthService {
   
-  static async loginWithFacebook() {
+  static async loginWithFacebook(homeScreen) {
     const appId = '611264925979151';
     const {type, token} = await Facebook.logInWithReadPermissionsAsync(
       appId,
@@ -14,7 +14,7 @@ export default class AuthService {
     );
 
     if (type === 'success' && token) {
-      // todo get api token
+      homeScreen.setState({status: 'Logging in...'});
     }
   }
 }
