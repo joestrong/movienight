@@ -7,15 +7,21 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-
 import { MonoText } from '../components/StyledText';
+import AuthService from '../services/AuthService';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {status: 'Logged out'};
+  }
 
   render() {
     return (
@@ -38,10 +44,12 @@ export default class HomeScreen extends React.Component {
             </Text>
           </View>
 
+          <View>
+            <Text id="status">{this.state.status}</Text>
+          </View>
+
           <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
+            <Button onPress={_ => {AuthService.loginWithFacebook(this)}} title="Log in with Facebook" />
           </View>
         </ScrollView>
 
