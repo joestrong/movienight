@@ -2,7 +2,7 @@ import { Facebook } from 'expo';
 
 export default class AuthService {
   
-  static async loginWithFacebook(homeScreen) {
+  static async loginWithFacebook(successCallback, progressCallback, failedCallback) {
     const appId = '611264925979151';
     const {type, token} = await Facebook.logInWithReadPermissionsAsync(
       appId,
@@ -14,18 +14,17 @@ export default class AuthService {
     );
 
     if (type === 'success' && token) {
-      homeScreen.setState({status: 'Logging in...'});
+      progressCallback.call();
       let appToken;
       try {
         appToken = await this.exchangeFacebookToken(token);
-        console.log(appToken);
       } catch (e) {
-        homeScreen.setState({status: e.message});
+        failedCallback.call();
       }
-      homeScreen.setState({status: 'Logged in!'});
+      successCallback.call(this, appToken);
     }
     if (type === 'cancel') {
-      homeScreen.setState({status: 'Could not log in with Facebook'});
+      failedCallback.call();
     }
   }
 
