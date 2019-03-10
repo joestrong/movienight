@@ -30,9 +30,7 @@ const messagesReducer = (state = INITIAL_STATE, action) => {
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
-  const user = {...state.user};
-
-  return user;
+  return state.user;
 };
 
 export default combineReducers({
