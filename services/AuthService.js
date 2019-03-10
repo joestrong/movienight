@@ -16,5 +16,8 @@ export default class AuthService {
     if (type === 'success' && token) {
       homeScreen.setState({status: 'Logging in...'});
     }
+    if (type === 'cancel') {
+      homeScreen.setState({status: 'Could not log in with Facebook'});
+    }
   }
 }
