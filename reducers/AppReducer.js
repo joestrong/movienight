@@ -30,7 +30,20 @@ const messagesReducer = (state = INITIAL_STATE, action) => {
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
-  return state.user;
+  const user = {...state.user};
+
+  switch (action.type) {
+    case Actions.LOGIN:
+      user.loggedIn = true;
+      user.token = action.token;
+      break;
+    case Actions.LOGOUT:
+      user.loggedIn = false;
+      user.token = null;
+      break;
+  }
+
+  return user;
 };
 
 export default combineReducers({

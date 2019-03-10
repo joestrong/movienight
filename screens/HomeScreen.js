@@ -7,28 +7,14 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Button,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
-import AuthService from '../services/AuthService';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
-
-  onLogin(token) {
-    this.props.onLogin(token);
-  }
-  
-  onLoginProgress() {
-    this.props.onLoginProgress();
-  }
-  
-  onLoginFailure() {
-    this.props.onLoginFailure();
-  }
 
   render() {
     return (
@@ -49,17 +35,6 @@ export default class HomeScreen extends React.Component {
             <Text style={styles.getStartedText}>
               Movie Night
             </Text>
-          </View>
-
-          <View>
-            <Text id="status">{this.props.loginStatus}</Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <Button
-              onPress={_ => AuthService.loginWithFacebook(token=>{this.onLogin(token)}, _=>{this.onLoginProgress()}, _=>{this.onLoginFailure()})}
-              title="Log in with Facebook"
-            />
           </View>
         </ScrollView>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import AppNavigator from '../navigation/AppNavigator';
-import LoginScreen from '../screens/LoginScreen';
+import LoginScreen from '../containers/screens/LoginScreen';
 
 export default class Wrapper extends React.Component {
   render() {

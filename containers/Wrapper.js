@@ -3,7 +3,7 @@ import Wrapper from '../components/Wrapper'
 
 const mapStateToProps = state => {
   return {
-    loggedIn: state.user !== null
+    loggedIn: state.user.loggedIn
   }
 }
 
