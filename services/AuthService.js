@@ -20,11 +20,14 @@ export default class AuthService {
         appToken = await this.exchangeFacebookToken(token);
       } catch (e) {
         failedCallback.call();
+        return;
       }
       successCallback.call(this, appToken);
+      return;
     }
     if (type === 'cancel') {
       failedCallback.call();
+      return;
     }
   }
 
@@ -40,6 +43,10 @@ export default class AuthService {
         token: fbToken
       })
     });
+
+    if (response.status !== 200) {
+      throw new Error("Could not login with Facebook");
+    }
 
     const responseJson = await response.json();
 
