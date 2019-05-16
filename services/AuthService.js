@@ -1,4 +1,5 @@
 import { Facebook } from 'expo';
+import Config from '../config'
 
 export default class AuthService {
   
@@ -32,8 +33,7 @@ export default class AuthService {
   }
 
   static async exchangeFacebookToken(fbToken) {
-    const apiHost = 'http://localhost';
-    const response = await fetch(apiHost + '/auth/exchange/facebook', {
+    const response = await fetch(Config.apiUrl + '/auth/exchange/facebook', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
