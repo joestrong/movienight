@@ -5,6 +5,11 @@ const INITIAL_STATE = {
   user: null,
   messages: {
     loginStatus: 'Logged Out'
+  },
+  lists: {
+    movieSuggestions: {
+      movies: []
+    }
   }
 };
 
@@ -46,7 +51,20 @@ const userReducer = (state = INITIAL_STATE, action) => {
   return user;
 };
 
+const listReducer = (state = INITIAL_STATE, action) => {
+  const lists = {...state.lists};
+  
+  switch (action.type) {
+    case Actions.MOVIE_SUGGESTIONS_LOAD:
+      lists.movieSuggestions.movies = action.movies;
+      break;
+  }
+
+  return lists;
+};
+
 export default combineReducers({
   messages: messagesReducer,
   user: userReducer,
+  lists: listReducer
 });
