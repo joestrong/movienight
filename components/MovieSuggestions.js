@@ -32,6 +32,8 @@ export default class MovieSuggestions extends React.Component {
       throw new Error("Could not fetch movies")
     }
 
-    return response.json()
+    const jsonData = await response.json()
+
+    return jsonData.data ? jsonData.data : []
   }
 }
