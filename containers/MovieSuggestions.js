@@ -1,17 +1,18 @@
 import { connect } from 'react-redux'
-import MovieList from '../components/MovieList'
+import MovieSuggestionsComponent from '../components/MovieSuggestions'
 import Actions from '../actions/Actions'
 
 const mapStateToProps = state => {
   return {
-    movies: state.lists.movieSuggestions.movies
+    movies: state.lists.movieSuggestions.movies,
+    userToken: state.user.token
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onLoad: movies => {
-      dispatch({type: Actions.MOVIE_SUGGESTIONS_LOAD})
+      dispatch({type: Actions.MOVIE_SUGGESTIONS_LOAD, movies: movies})
     }
   }
 }
@@ -19,6 +20,6 @@ const mapDispatchToProps = dispatch => {
 const MovieSuggestions = connect(
   mapStateToProps,
   mapDispatchToProps
-)(MovieList)
+)(MovieSuggestionsComponent)
 
 export default MovieSuggestions

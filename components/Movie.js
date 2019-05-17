@@ -5,7 +5,7 @@ export default class Movie extends React.Component {
   render() {
     return (
       <View style={styles.movie}>
-        <Text>I am a movie</Text>
+        <Text>{this.props.movie.title}</Text>
       </View>
     )
   }

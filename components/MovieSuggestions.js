@@ -1,19 +1,20 @@
 import React from 'react'
 import MovieList from '../components/MovieList'
+import Config from '../config'
 
 export default class MovieSuggestions extends React.Component {
   render() {
-    if (props.movies) {
+    if (this.props.movies) {
       return (
-        <MovieList movies={props.movies}></MovieList>
+        <MovieList movies={this.props.movies}></MovieList>
       )
     } else {
-      return ''
+      return null
     }
   }
 
-  componentDidMount() {
-    const movies = this.loadMovies()
+  async componentDidMount() {
+    const movies = await this.loadMovies()
     this.props.onLoad(movies)
   }
 
@@ -22,7 +23,8 @@ export default class MovieSuggestions extends React.Component {
       method: 'GET',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.props.userToken
       }
     })
 
@@ -30,6 +32,6 @@ export default class MovieSuggestions extends React.Component {
       throw new Error("Could not fetch movies")
     }
 
-    return await response.json()
+    return response.json()
   }
 }
