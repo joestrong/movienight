@@ -3,7 +3,6 @@ import LoginScreen from '../../screens/LoginScreen'
 import actions from '../../actions/Actions'
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     loginStatus: state.messages.loginStatus
   }
