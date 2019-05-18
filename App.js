@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import appReducer from './reducers/AppReducer';
 import Wrapper from './containers/Wrapper';
+import AuthService from './services/AuthService'
 
 const store = createStore(appReducer);
 
@@ -47,6 +48,7 @@ export default class App extends React.Component {
         // to remove this if you are not using it in your app
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
       }),
+      AuthService.checkForExistingLogin(store),
     ]);
   };
 

@@ -1,5 +1,7 @@
 import { Facebook } from 'expo';
 import Config from '../config'
+import {AsyncStorage} from 'react-native'
+import Actions from '../actions/Actions'
 
 export default class AuthService {
   
@@ -51,5 +53,13 @@ export default class AuthService {
     const responseJson = await response.json();
 
     return responseJson.token;
+  }
+
+  static async checkForExistingLogin(store) {
+    const token = await AsyncStorage.getItem('user-token')
+
+    if (token !== null) {
+      store.dispatch({type: Actions.LOGIN, token: token})
+    }
   }
 }
