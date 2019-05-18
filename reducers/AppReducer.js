@@ -5,11 +5,16 @@ const INITIAL_STATE = {
   user: null,
   messages: {
     loginStatus: 'Logged Out'
+  },
+  lists: {
+    movieSuggestions: {
+      movies: []
+    }
   }
 };
 
-const messagesReducer = (state = INITIAL_STATE, action) => {
-  const messages = {...state.messages};
+const messagesReducer = (state = INITIAL_STATE.messages, action) => {
+  const messages = {...state};
 
   switch (action.type) {
     case Actions.LOGIN:
@@ -29,8 +34,8 @@ const messagesReducer = (state = INITIAL_STATE, action) => {
   return messages;
 };
 
-const userReducer = (state = INITIAL_STATE, action) => {
-  const user = {...state.user};
+const userReducer = (state = INITIAL_STATE.user, action) => {
+  const user = {...state};
 
   switch (action.type) {
     case Actions.LOGIN:
@@ -46,7 +51,20 @@ const userReducer = (state = INITIAL_STATE, action) => {
   return user;
 };
 
+const listReducer = (state = INITIAL_STATE.lists, action) => {
+  const lists = {...state};
+
+  switch (action.type) {
+    case Actions.MOVIE_SUGGESTIONS_LOAD:
+      lists.movieSuggestions.movies = action.movies;
+      break;
+  }
+
+  return lists;
+};
+
 export default combineReducers({
   messages: messagesReducer,
   user: userReducer,
+  lists: listReducer
 });
