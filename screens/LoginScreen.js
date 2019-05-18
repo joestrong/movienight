@@ -4,14 +4,16 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  View
+  View,
+  AsyncStorage
 } from 'react-native';
 import AuthService from '../services/AuthService';
 
 export default class LoginScreen extends React.Component {
-
-  onLogin(token) {
-    this.props.onLogin(token);
+  
+  async onLogin(token) {
+    await AsyncStorage.setItem('user-token', token)
+    this.props.onLogin(token)
   }
 
   onLoginProgress() {

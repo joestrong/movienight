@@ -8,10 +8,10 @@ export default class Wrapper extends React.Component {
       return (
         <AppNavigator />
       );
-    } else {
-      return (
-        <LoginScreen />
-      );
     }
+
+    return (
+      <LoginScreen />
+    );
   }
 }
