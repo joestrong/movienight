@@ -57,8 +57,24 @@ export default class AuthService {
 
   static async checkForExistingLogin(store) {
     const token = await AsyncStorage.getItem('user-token')
+    const response = await fetch(Config.apiUrl + '/auth/validate-token', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: token
+      })
+    })
 
-    if (token !== null) {
+    if (response.status !== 200) {
+      return;
+    }
+    const responseJson = await response.json();
+    const validity = responseJson.valid;
+
+    if (validity === true) {
       store.dispatch({type: Actions.LOGIN, token: token})
     }
   }
