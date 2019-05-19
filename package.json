@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "test": "yarn jest",
-    "publish": "yarn test && expo publish",
+    "pub": "yarn test && expo publish",
     "test:watch": "yarn jest --watchAll"
   },
   "jest": {
