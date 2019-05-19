@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessibilityIgnoresInvertColors={true}
+  style={
+    Object {
+      "flexDirection": "row",
+      "margin": 15,
+      "padding": 15,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://image.tmdb.org/t/p/w500/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "height": undefined,
+          "width": undefined,
+        },
+        undefined,
+      ]
+    }
+  />
+  <Image
+    source={
+      Object {
+        "uri": "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+      }
+    }
+    style={
+      Object {
+        "height": 225,
+        "width": 150,
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "backgroundColor": "rgba(0,0,0,0.5)",
+        "bottom": 0,
+        "color": "#fff",
+        "fontSize": 20,
+        "left": 0,
+        "padding": 15,
+        "position": "absolute",
+        "right": 0,
+      }
+    }
+  >
+    Avengers: Endgame
+  </Text>
+</View>
+`;

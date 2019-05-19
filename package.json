@@ -5,7 +5,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "node ./node_modules/jest/bin/jest.js --watchAll"
+    "test": "yarn jest",
+    "pub": "yarn test && expo publish",
+    "test:watch": "yarn jest --watchAll"
   },
   "jest": {
     "preset": "jest-expo"

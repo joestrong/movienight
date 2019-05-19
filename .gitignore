@@ -12,4 +12,6 @@ npm-debug.*
 .idea/**/dictionaries
 .idea/**/shelf
 
+/coverage
+
 /config.js
