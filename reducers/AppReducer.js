@@ -41,6 +41,7 @@ const userReducer = (state = INITIAL_STATE.user, action) => {
     case Actions.LOGIN:
       user.loggedIn = true;
       user.token = action.token;
+      user.name = action.name;
       break;
     case Actions.LOGOUT:
       user.loggedIn = false;

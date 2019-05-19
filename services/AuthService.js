@@ -2,6 +2,7 @@ import { Facebook } from 'expo';
 import Config from '../config'
 import {AsyncStorage} from 'react-native'
 import Actions from '../actions/Actions'
+import store from '../store'
 
 export default class AuthService {
   
@@ -55,7 +56,7 @@ export default class AuthService {
     return responseJson.token;
   }
 
-  static async checkForExistingLogin(store) {
+  static async checkForExistingLogin() {
     const token = await AsyncStorage.getItem('user-token')
     const response = await fetch(Config.apiUrl + '/auth/validate-token', {
       method: 'POST',

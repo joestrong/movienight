@@ -1,13 +1,10 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import appReducer from './reducers/AppReducer';
 import Wrapper from './containers/Wrapper';
 import AuthService from './services/AuthService'
-
-const store = createStore(appReducer);
+import store from './store'
 
 export default class App extends React.Component {
   state = {
@@ -48,7 +45,7 @@ export default class App extends React.Component {
         // to remove this if you are not using it in your app
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
       }),
-      AuthService.checkForExistingLogin(store),
+      AuthService.checkForExistingLogin(),
     ]);
   };
 
