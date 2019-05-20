@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, ScrollView, Button, StyleSheet } from 'react-native'
+import AuthService from '../services/AuthService'
 import UserService from '../services/UserService'
 
 export default class SettingsScreen extends React.Component {
@@ -15,6 +16,10 @@ export default class SettingsScreen extends React.Component {
 
     this.setState({ profile: profile })
   }
+  
+  async onClick() {
+    await AuthService.logout()
+  }
     
   render() {
     const profile = this.state.profile
@@ -24,18 +29,30 @@ export default class SettingsScreen extends React.Component {
     }
 
     return (
-      <View style={styles.profile}>
-        <Text style={styles.name}>{profile.name}</Text>
+      <View style={styles.container}>
+        <ScrollView style={styles.profile}>
+          <Text style={styles.name}>{profile.name}</Text>
+        </ScrollView>
+        <View style={styles.actions}>
+          <Button onPress={_ => this.onClick()} title="Log Out"/>
+        </View>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
   profile: {
+    flex: 1,
     padding: 15
   },
   name: {
     fontSize: 20
+  },
+  actions: {
   }
 });

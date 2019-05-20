@@ -58,6 +58,11 @@ export default class AuthService {
 
   static async checkForExistingLogin() {
     const token = await AsyncStorage.getItem('user-token')
+
+    if (token === null) {
+      return
+    }
+
     const response = await fetch(Config.apiUrl + '/auth/validate-token', {
       method: 'POST',
       headers: {
@@ -78,5 +83,10 @@ export default class AuthService {
     if (validity === true) {
       store.dispatch({type: Actions.LOGIN, token: token})
     }
+  }
+
+  static async logout() {
+    await AsyncStorage.removeItem('user-token')
+    store.dispatch({type: Actions.LOGOUT})
   }
 }
