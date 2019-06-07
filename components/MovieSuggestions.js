@@ -1,12 +1,17 @@
 import React from 'react'
-import MovieList from '../components/MovieList'
+import { FlatList } from 'react-native'
+import Movie from '../components/Movie'
 import Config from '../config'
 
 export default class MovieSuggestions extends React.Component {
   render() {
     if (this.props.movies) {
       return (
-        <MovieList movies={this.props.movies}></MovieList>
+        <FlatList
+          data={this.props.movies}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({item}) => <Movie movie={item}></Movie>}
+        />
       )
     } else {
       return null
