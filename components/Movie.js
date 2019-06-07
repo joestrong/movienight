@@ -1,5 +1,6 @@
 import React from 'react'
-import { ImageBackground, Text, Image, StyleSheet } from 'react-native';
+import { View, ImageBackground, Text, Image, StyleSheet } from 'react-native';
+import SeenButton from './Movie/SeenButton'
 
 export default class Movie extends React.Component {
   render() {
@@ -8,6 +9,9 @@ export default class Movie extends React.Component {
     return (
       <ImageBackground source={{uri:movie.backdropImage}} style={styles.movie}>
         <Image source={{uri:movie.posterImage}} style={styles.image}></Image>
+        <View>
+          <SeenButton movie={movie} />
+        </View>
         <Text style={styles.title}>{movie.title}</Text>
       </ImageBackground>
     )

@@ -1,6 +1,6 @@
 import 'react-native'
 import React from 'react'
-import Movie from '../Movie'
+import SeenButton from '../SeenButton'
 import renderer from 'react-test-renderer'
 
 it('renders correctly', () => {
@@ -11,7 +11,7 @@ it('renders correctly', () => {
     "backdropImage": "https:\/\/image.tmdb.org\/t\/p\/w500\/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
     "seen": false
   }
-  const tree = renderer.create(<Movie movie={movie}></Movie>).toJSON();
+  const tree = renderer.create(<SeenButton movie={movie} />).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

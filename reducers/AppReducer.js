@@ -59,6 +59,24 @@ const listReducer = (state = INITIAL_STATE.lists, action) => {
     case Actions.MOVIE_SUGGESTIONS_LOAD:
       lists.movieSuggestions.movies = action.movies;
       break;
+    case Actions.SEEN:
+      lists.movieSuggestions.movies = lists.movieSuggestions.movies.map(movie => {
+        if (movie.id === action.movie.id) {
+          movie.seen = true
+        }
+
+        return movie
+      })
+      break
+    case Actions.UNSEEN:
+      lists.movieSuggestions.movies = lists.movieSuggestions.movies.map(movie => {
+        if (movie.id === action.movie.id) {
+          movie.seen = false
+        }
+
+        return movie
+      })
+      break
   }
 
   return lists;
